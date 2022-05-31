@@ -1,0 +1,46 @@
+<% if @customer.errors.any? %>
+  <ul>
+    <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div>
+  <h1>Novo Cliente</h1>
+</div>
+
+<div>
+  <%= form_for @customer do |f| %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div>
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
+    </div>
+
+    <div>
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+    </div>
+
+    <div>
+      <%= f.label :smoker %>
+      <% { 'S': 'Sim', 'N': 'Não'}.each do |key, value| %>
+        <%= f.radio_button :smoker, key %> <%= value %> </br>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.submit 'Criar Cliente' %>
+    </div>
+  <% end %>
+</div>
